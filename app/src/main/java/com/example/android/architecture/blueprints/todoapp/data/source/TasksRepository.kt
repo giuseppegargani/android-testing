@@ -5,7 +5,7 @@ import com.example.android.architecture.blueprints.todoapp.data.Result
 import com.example.android.architecture.blueprints.todoapp.data.Task
 
 interface TasksRepository {
-    suspend fun getTasks(forceUpdate: Boolean): Result<List<Task>>
+    suspend fun getTasks(forceUpdate: Boolean = false): Result<List<Task>>
 
     suspend fun refreshTasks()
     fun observeTasks(): LiveData<Result<List<Task>>>
@@ -14,9 +14,9 @@ interface TasksRepository {
     fun observeTask(taskId: String): LiveData<Result<Task>>
 
     /**
- * Relies on [getTasks] to fetch data and picks the task with the same ID.
- */
-    suspend fun getTask(taskId: String, forceUpdate: Boolean): Result<Task>
+     * Relies on [getTasks] to fetch data and picks the task with the same ID.
+     */
+    suspend fun getTask(taskId: String, forceUpdate: Boolean = false): Result<Task>
 
     suspend fun saveTask(task: Task)
 
