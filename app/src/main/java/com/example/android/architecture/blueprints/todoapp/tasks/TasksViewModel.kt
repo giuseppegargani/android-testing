@@ -45,7 +45,6 @@ class TasksViewModel(private val tasksRepository: TasksRepository) : ViewModel()
             }
         }
         tasksRepository.observeTasks().switchMap { filterTasks(it) }
-
     }
 
     val items: LiveData<List<Task>> = _items
@@ -183,7 +182,6 @@ class TasksViewModel(private val tasksRepository: TasksRepository) : ViewModel()
     }
 
     private fun filterTasks(tasksResult: Result<List<Task>>): LiveData<List<Task>> {
-        // TODO: This is a good case for liveData builder. Replace when stable.
         val result = MutableLiveData<List<Task>>()
 
         if (tasksResult is Success) {
