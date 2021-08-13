@@ -9,6 +9,11 @@ import org.junit.Assert.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
+
+/*Crea dei Unit Test per delle funzioni locali che prende da qualche altro file
+
+
+ */
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
