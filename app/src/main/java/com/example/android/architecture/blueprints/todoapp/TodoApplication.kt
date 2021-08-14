@@ -27,8 +27,11 @@ import timber.log.Timber.DebugTree
  * Also, sets up Timber in the DEBUG BuildConfig. Read Timber's documentation for production setups.
  */
 
-/* Crea diversi Tests per Statistiche varie
+/* Crea diversi Tests per Statistiche varie - fun statisticheAttiveEComplete_parzialmenteCompletate_restituisciPercentuale()
     Vai su StatisticsUtils e con il pulsante destro, clicca su generate e su Test ed accertati che sia JUnit4 e scrivi un test che riguardi alcune Tasks
+            (la prima è val perchè la lista di Task è immutabile)
+            testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
+
     @Test
     fun getActiveAndCompletedStats_partiallyCompleted_returnsPercentage() {
 
@@ -47,11 +50,15 @@ import timber.log.Timber.DebugTree
  */
 
 /*1 - Crea un Test per Tasks nulle e con errori e che restituisce Completed Zero (e chiamale come vuoi)
-    modifica la funzione in modo StatisticUtils in modo corrispondente!!!
-    all'inizio
+    modifica la funzione in modo StatisticUtils in modo corrispondente!!!  e non preoccuparti per messaggi di errore durante la scrittura
+    Nomi: getActiveAndCompletedStats_error_returnZeros getActiveAndCompletedStats_empty_returnZeros
+
+    aggiustamenti all'inizio della funzione  (si usa il metodo .isEmpty())
     return if (tasks == null || tasks.isEmpty()) {
         StatsResult(0f, 0f)
     } else {
+
+    //ma come valore di tasks si mette emptyList o null (direttamente come argomento per istanziare la variabile result
 
  */
 
@@ -78,6 +85,19 @@ https://developer.android.com/training/testing/fundamentals
     testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
     come argomento della classe specifica di ViewModel si mette ApplicationProvider.getApplicationContext() !!!!
     in cima alla classe si mette         @RunWith(AndroidJUnit4::class)
+
+    @RunWith(AndroidJUnit4::class)
+    class TasksViewModelTest {
+
+    @Test
+    fun addNewTask_setsNewTaskEvent() {
+
+        // Given a fresh ViewModel
+        val tasksViewModel = TasksViewModel(ApplicationProvider.getApplicationContext())
+
+        // When adding a new task
+        tasksViewModel.addNewTask()
+    }
  */
 
 /* Modifica la dipendenze per gestire eventuali errori sul Manifest e installa se possibile Java 9 o compila a SDK 28
